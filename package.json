@@ -1,0 +1,44 @@
+{
+  "name": "shift-handover-management-system",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "server:dev": "tsx server/src/index.ts",
+    "db:seed": "tsx server/src/seed.ts",
+    "client:dev": "vite --config client/vite.config.ts",
+    "build": "npm run client:build",
+    "client:build": "vite build --config client/vite.config.ts",
+    "start": "tsx server/src/index.ts"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "cors": "latest",
+    "dotenv": "^17.4.2",
+    "express": "latest",
+    "jspdf": "latest",
+    "lucide-react": "latest",
+    "mysql2": "^3.24.3",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "latest"
+  },
+  "devDependencies": {
+    "@types/cors": "latest",
+    "@types/express": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "autoprefixer": "latest",
+    "concurrently": "latest",
+    "tsx": "latest",
+    "typescript": "latest",
+    "vite": "latest"
+  },
+  "version": "1.0.0",
+  "description": "Demo-ready full-stack React + Express application for grounded shift handovers.",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

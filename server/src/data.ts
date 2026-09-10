@@ -3,6 +3,9 @@ export type Status='completed'|'in_progress'|'blocked'|'escalated'|'watch'|'open
 export type User={id:string;name:string;role:Role;title:string;team_id?:string;team_lead_id?:string};
 export type Team={id:string;name:string;lead_id:string;worker_ids:string[]};
 export type Event={id:string;source:'jira'|'incident'|'chat'|'commit';record_id:string;timestamp:string;summary:string;status:Status;priority:'low'|'medium'|'high'|'critical';worker_id:string;team_id:string;team_lead_id:string;update_type:string};
+export type HandoverItem = { source: string; record_id: string; timestamp: string; summary: string; priority: string; finalStatus: string; updates: string[]; isCarriedForward?: boolean; origin?: string };
+export type Handover = { worker: User; team: Team; lead: User; shiftStart: string; shiftEnd: string; completed: HandoverItem[]; inProgress: HandoverItem[]; blockers: HandoverItem[]; watch: HandoverItem[]; priorities: HandoverItem[]; eventCount: number; duplicateUpdatesCollapsed: number; carriedForwardCount: number; warnings: string[] };
+
 export const users:User[]=[
 {id:'m1',name:'Rohan Mehta',role:'manager',title:'Operations Manager'},
 {id:'tl1',name:'Arun Kumar',role:'team_lead',title:'Team Lead',team_id:'t1'},
@@ -37,6 +40,7 @@ export const events:Event[]=[
  ev('p3','jira','OPS-108','2026-09-02T18:20:00+05:30','Payment API investigation','in_progress','high','w1','updated'),
  ev('p4','incident','INC-115','2026-09-02T19:10:00+05:30','Database connection issue','blocked','critical','w1','escalated'),
  ev('p5','jira','OPS-120','2026-09-02T20:30:00+05:30','Monitor payment service','watch','medium','w1','watch'),
+ ev('p6','jira','OPS-109','2026-09-02T20:45:00+05:30','Auth token refresh retry logic','in_progress','high','w1','updated'),
  // Divya: completed + quiet (no blocker/watch)
  ev('d1','jira','OPS-201','2026-09-03T09:30:00+05:30','Login regression test suite passed','completed','high','w2','closed'),
  ev('d2','jira','OPS-202','2026-09-03T11:10:00+05:30','Checkout validation completed','completed','medium','w2','closed'),

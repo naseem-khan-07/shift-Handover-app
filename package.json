@@ -8,7 +8,8 @@
     "client:dev": "vite --config client/vite.config.ts",
     "build": "npm run client:build",
     "client:build": "vite build --config client/vite.config.ts",
-    "start": "tsx server/src/index.ts"
+    "start": "tsx server/src/index.ts",
+    "test": "tsx server/src/test.ts"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
